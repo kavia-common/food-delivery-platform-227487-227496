@@ -55,6 +55,12 @@ def health_check():
     return {"message": "Healthy"}
 
 
+@app.get("/health", tags=["dev"], summary="Health check (alias)", description="Alias for the root health endpoint.")
+def health_check_alias():
+    """Backend health check alias for infra/preview smoke tests."""
+    return {"status": "ok"}
+
+
 @app.get("/docs/ws", tags=["tracking"], summary="WebSocket usage help", description="How to use order tracking websocket.")
 def websocket_usage_help():
     """Describe WebSocket endpoints and usage."""
